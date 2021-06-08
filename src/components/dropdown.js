@@ -1,7 +1,7 @@
 import React from 'react';
-import Data from '../mock/mockContent.js';
+import content from '../mock/mockContent.js';
 import { connect } from 'react-redux';
-import { loadData } from '../actions/action.js';
+import { getCountries } from '../actions/action.js';
 
 class Dropdown extends React.Component {
     constructor(props) {
@@ -16,18 +16,13 @@ class Dropdown extends React.Component {
     }
     componentDidMount() {
        
-        this.setCountries(this.props.Data.apiRegions[0]);
-
-        this.setState({
-            regions: this.props.Data.apiRegions,
-            country: this.props.apiValues
-        });
+        this.setCountries(this.props.Content.regions[0]);
     }
 
     static getDerivedStateFromProps(nextProps, prevProps) {
-        if (prevProps.apiValues !== nextProps.apiValues) {
+        if (prevProps.countries !== nextProps.countries) {
             return {
-                country: nextProps.apiValues,
+                country: nextProps.countries,
                 selected: nextProps.name,
             };
         }
@@ -36,14 +31,14 @@ class Dropdown extends React.Component {
 
     changeCountry(event) {
         this.setState({ selectedRegion: event.target.value });
-        this.props.loadData(event.target.value);
+        this.props.getCountries(event.target.value);
     }
 
     setCountries(region) {
-        this.props.loadData(region);
-        if (this.props.apiValues) {
+        this.props.getCountries(region);
+        if (this.props.countries) {
             this.setState({
-                country: this.props.apiValues
+                country: this.props.countries
             })
         }
 
@@ -51,18 +46,18 @@ class Dropdown extends React.Component {
     render() {
         return (
             <div className="component">
-                <h1>{this.props.Data.heading}</h1>
+                <h1>{this.props.Content.heading}</h1>
                 <div className="dropdown">
                 <label>Select Region </label>
                 <select value={this.state.selectedRegion} onChange={this.changeCountry}>
-                    {this.state.regions.map((region, i) => {
+                    {this.props.Content.regions.map((region, i) => {
                         return <option key={i}>{region}</option>
                     })}
                 </select>               
                 <br />              
                 <label>Select Country </label>
                 <select >
-                    {this.state.country.map(
+                    {this.props.countrries.map(
                         (element, i) => {
                             return <option key={i}>{element.name}</option>;
                         }
@@ -74,15 +69,15 @@ class Dropdown extends React.Component {
     }
 }
 Dropdown.defaultProps = {
-    Data: Data
+    Content: content
 }
 const mapStateToProps = (state) => {
     return {
-        apiValues: state.event.apiValues
+        countries: state.event.countries
     };
 };
 const mapDispatchProps = (dispatch) => ({
-    loadData: (region) => dispatch(loadData(region))
+    getCountries: (region) => dispatch(getCountries(region))
 });
 
 export default connect(mapStateToProps, mapDispatchProps)(Dropdown);
