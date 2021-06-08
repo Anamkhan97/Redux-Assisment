@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import reducer from './reducer';
+import countryReducer from './countryReducer';
 export default combineReducers({
-    event: reducer
+    event: countryReducer
 })
