@@ -1,5 +1,5 @@
-const Data ={
+const content ={
     heading: "Region-Country Selector",
-    apiRegions :['Africa', 'Asia','Europe', 'Americas','Oceania']
+    regions :['Africa', 'Asia','Europe', 'Americas','Oceania']
 }
-export default Data;
+export default content;
