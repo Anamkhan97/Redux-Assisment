@@ -1,0 +1,33 @@
+.component{
+  box-sizing: border-box;
+  width: 550px;
+  height: 250px;
+  margin: 50px auto;
+  text-align: center;
+  position: relative;
+  border-radius: 5px;
+  background-color: cornsilk;
+}
+.dropdown{
+  text-align: center;
+  background-color: cadetblue;
+  color: black;
+  height: 200px;
+  outline:none;
+  padding : 20px auto;
+}
+.h1{
+  color: cornflowerblue;
+  font-weight: bolder;
+}
+.dropdown select {
+padding :10px;
+margin: 10px auto;
+position: relative;
+font-weight: bolder;
+}
+.dropdown label{
+  position :relative;
+  font-weight: bolder;
+
+}
