@@ -1,11 +1,11 @@
 const INITIAL_STATE = {
-    apiValues: []
+    countries: []
 }
-const mainReducer = (state = INITIAL_STATE, action) => {
+const countryReducer = (state = INITIAL_STATE, action) => {
     if (action.type === "CHANGE_REGION") {
         return {
             ...state,
-            apiValues: action.payload
+            countries: action.payload
         }
     } else {
         return {
@@ -14,4 +14,4 @@ const mainReducer = (state = INITIAL_STATE, action) => {
     }
 }
 
-export default mainReducer;
+export default countryReducer;
