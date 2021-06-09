@@ -51,21 +51,11 @@ class Dropdown extends React.Component {
                 <h1>{this.props.Content.heading}</h1>
                 <div className="dropdown">
                 <label>Select Region </label>
-               {/*  <select value={this.state.selectedRegion} onChange={this.changeCountry}>
-                    {this.props.Content.regions.map((region, i) => {
-                        return <option key={i}>{region}</option>
-                    })}
-                </select>   */}        
+                    
                 <SelectComponent value={this.state.selectedRegion} onChange={this.changeCountry} dropdown={this.props.Content.regions}/>     
                 <br />              
                 <label>Select Country </label>
-               {/*  <select >
-                    {this.props.countries.map(
-                        (country) => {
-                            return <option >{country.name}</option>;
-                        }
-                    )}
-                </select> */}
+               
                 <SelectComponent dropdown={this.props.countries}/>
                 </div>
             </div>
