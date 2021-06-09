@@ -1,10 +1,10 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
-import { getCountries } from '../actions/action-getcountries.js';
-import SelectComponent from './common/dropdown';
+import { getCountries } from '../actions/action-get-countries.js';
+import SelectComponent from './common/selectComponent';
 
-class Dropdown extends React.Component {
+class countrySelector extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -73,4 +73,4 @@ const mapDispatchProps = (dispatch) => ({
     getCountries: (region) => dispatch(getCountries(region))
 });
 
-export default connect(mapStateToProps, mapDispatchProps)(Dropdown);
+export default connect(mapStateToProps, mapDispatchProps)(countrySelector);
