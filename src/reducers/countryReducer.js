@@ -1,17 +1,23 @@
 const INITIAL_STATE = {
-    countries: []
+    countries: [], 
+    error:null
 }
 const countryReducer = (state = INITIAL_STATE, action) => {
-    if (action.type === "CHANGE_REGION") {
+    switch (action.type ) {
+        case "CHANGE_REGION":
         return {
             ...state,
             countries: action.payload
         }
-    } else {
-        return {
-            ...state
-        }
-    }
+        case "REGION_FAIL":
+            return {
+                ...state,
+                error: action.payload
+            }
+            default:
+                return state;
+    } 
+    
 }
 
 export default countryReducer;
